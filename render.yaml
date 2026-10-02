@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: bank-account-management-backend
+    env: python
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: bank-account-management-frontend
+          envVarKey: RENDER_EXTERNAL_URL
+
+  - type: web
+    name: bank-account-management-frontend
+    env: static
+    buildCommand: "cd frontend && npm install && npm run build"
+    staticPublishPath: "./frontend/dist"
+    envVars:
+      - key: VITE_API_BASE_URL
+        fromService:
+          type: web
+          name: bank-account-management-backend
+          envVarKey: RENDER_EXTERNAL_URL
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

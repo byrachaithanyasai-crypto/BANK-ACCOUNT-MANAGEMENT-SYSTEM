@@ -1,0 +1,22 @@
+
+:root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent-electric: #0ea5e9;
+  --accent-purple: #8b5cf6;
+}
+.dark {
+  --bg-primary: #0a192f;
+  --bg-secondary: #112240;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --accent-electric: #64ffda;
+  --accent-purple: #6b46c1;
+}
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
