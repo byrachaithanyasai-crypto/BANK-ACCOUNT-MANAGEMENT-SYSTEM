@@ -1,4 +1,4 @@
-# BANKX - Smart Banking Database Management & Analytics System
+#  Bank Account  Management  System
 
 ## 1. Project Overview
 BANKX is a premium, institutional-grade banking platform designed as a comprehensive DBMS capstone project.
