@@ -70,6 +70,7 @@ export default function Dashboard() {
         { label: 'New Account', path: '/accounts', roles: ['ADMIN', 'MANAGER'] },
         { label: 'New Customer', path: '/customers', roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] },
         { label: 'New Transaction', path: '/transactions', roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] },
+        { label: 'New Loan', path: '/loans', roles: ['ADMIN', 'MANAGER'] },
         { label: 'Manage Employees', path: '/employees', roles: ['ADMIN'] },
         { label: 'Manage Branches', path: '/branches', roles: ['ADMIN'] }
     ].filter(action => action.roles.includes(user?.role));
@@ -229,6 +230,37 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
+
+            {/* Loans Overview (Compact) */}
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <Briefcase size={20} className="text-blue-600" /> Loans Overview
+                    </h2>
+                    <Link to="/loans" className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors">
+                        View All Loans →
+                    </Link>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <p className="text-xs font-semibold text-slate-500 uppercase">Total Loans</p>
+                        <p className="text-2xl font-bold text-slate-800 mt-1">{stats.total_loans || 0}</p>
+                    </div>
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <p className="text-xs font-semibold text-slate-500 uppercase">Active</p>
+                        <p className="text-2xl font-bold text-emerald-600 mt-1">{stats.active_loans || 0}</p>
+                    </div>
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <p className="text-xs font-semibold text-slate-500 uppercase">Pending</p>
+                        <p className="text-2xl font-bold text-amber-500 mt-1">{stats.pending_loans || 0}</p>
+                    </div>
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <p className="text-xs font-semibold text-slate-500 uppercase">Total Amount</p>
+                        <p className="text-2xl font-bold text-slate-800 mt-1">{formatCurrency(stats.total_loan_amount || 0)}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
+

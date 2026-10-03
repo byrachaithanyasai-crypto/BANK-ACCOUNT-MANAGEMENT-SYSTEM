@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard';
 import Accounts from './pages/Accounts';
 import Customers from './pages/Customers';
 import Transactions from './pages/Transactions';
+import Loans from './pages/Loans';
 import Employees from './pages/Employees';
 import Branches from './pages/Branches';
 import Reports from './pages/Reports';
@@ -48,6 +49,7 @@ function App() {
         <Route path="/accounts" element={<Accounts />} />
         <Route path="/customers" element={<Customers />} />
         <Route path="/transactions" element={<Transactions />} />
+        <Route path="/loans" element={<Loans />} />
         
         <Route path="/employees" element={<ProtectedRoute allowedRoles={['ADMIN']}><Employees /></ProtectedRoute>} />
         <Route path="/branches" element={<ProtectedRoute allowedRoles={['ADMIN']}><Branches /></ProtectedRoute>} />
@@ -61,3 +63,5 @@ function App() {
 }
 
 export default App;
+
+

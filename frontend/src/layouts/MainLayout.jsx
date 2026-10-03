@@ -11,7 +11,7 @@ import {
     Briefcase, 
     Building2, 
     PieChart, 
-    ShieldAlert, 
+    ShieldAlert, Banknote, 
     Settings, 
     LogOut,
     Menu,
@@ -48,7 +48,8 @@ export default function MainLayout() {
             items: [
                 { path: '/accounts', label: 'Accounts', icon: CreditCard, roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] },
                 { path: '/customers', label: 'Customers', icon: Users, roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] },
-                { path: '/transactions', label: 'Transactions', icon: Activity, roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] }
+                { path: '/transactions', label: 'Transactions', icon: Activity, roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] },
+                { path: '/loans', label: 'Loans', icon: ShieldAlert, Banknote, roles: ['ADMIN', 'MANAGER', 'EMPLOYEE'] }
             ]
         },
         {
@@ -222,6 +223,9 @@ export default function MainLayout() {
         </div>
     );
 }
+
+
+
 
 
 

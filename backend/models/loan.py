@@ -15,5 +15,7 @@ class Loan(Base):
     end_date = Column(Date)
     status = Column(Enum('ACTIVE', 'CLOSED', 'DEFAULTED', 'PENDING'), default='PENDING')
     outstanding_balance = Column(Numeric(15, 2), nullable=False)
+    loan_officer_id = Column(Integer, ForeignKey("EMPLOYEE.employee_id"), nullable=True)
     
     customer = relationship("Customer", back_populates="loans")
+    officer = relationship("Employee", foreign_keys=[loan_officer_id])
